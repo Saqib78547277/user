@@ -1,38 +1,130 @@
-.App {
-  text-align: center;
+* {
+  margin: 0px;
+  padding: 0px;
+  
+}
+body {
+  background:rgb(49, 46, 46);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: grid;
+  background:#282c34;
+  height: 600px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+ 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.item1 {
+  background:rgb(0, 93, 0);
+  grid-column-start: 1;
+  grid-column-end: 4;
   color: white;
+  /* display: flex; */
+}
+.item2 {
+  background: rgb(49, 46, 46);
+  grid-column-start: 1;
+  grid-column-end: 4;
+  color: white;
+
+}
+.innercontainer {
+  display: grid;
+  width: 100%;
+ 
+ 
+  grid-template-columns: 25% 25% 25%;
+  grid-template-rows: 1fr 1fr 1fr  ;
+  justify-content: center;
+  column-gap: 12px;
+  row-gap: 12px;
+  padding-top: 12px;
+
+}
+.inneritem1 {
+  display: flex;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 100%;
+  height: 60px;
+  background: rgb(36, 32, 32);
+  color: yellow;
+  border-radius: 2px;
 }
 
-.App-link {
-  color: #61dafb;
+nav {
+  float: right;
+  line-height: 47px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav a {
+  text-decoration: none;
+  padding: 0;
+  background: rgb(224, 224, 5);
+  border: 2px solid yellow;
+  border-radius: 5px;
+  color: black;
+  margin: 0 10px;
+  font-size: 14px;
+  padding: 8px 12px;
+  font-family: 'Bold';
+}
+.logo {
+  float: left;
+  line-height: 50px;
+  font-size: 20px;
+  margin-left: 10px;
+  color: rgb(110, 148, 75);
+  
+}
+
+.img {
+  display: inline-flex;
+  clip-path: circle();
+  margin: 5px 0 5px 5px;
+}
+.menu{
+  float: left;
+color: black;
+margin-left: 20px;
+display: none;
+
+}
+
+
+.heading p {
+  padding: 5px 5px;
+  font-size: 12px;
+}
+
+
+
+
+@media screen and (max-width: 700px){
+  .innercontainer {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 70%;
+    grid-template-rows: 1fr 1fr 1fr  ;
+    justify-content: center;
+    column-gap: 12px;
+    row-gap: 8px;
+    padding-top: 12px;
+  
   }
-  to {
-    transform: rotate(360deg);
+  nav {
+    display: none;
+  }
+  .logo {
+    float: right;
+    margin-right: 10px;
+  }
+  .menu{
+    float: left;
+    
+    display:block;
+    cursor: pointer;
+    
   }
 }
