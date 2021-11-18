@@ -3,14 +3,21 @@ import "./App.css";
 
 
 function App() {
+
+  function togglemenu(){
+    document.getElementById('navbar')?.classList.toggle('active');
+  }
+  // function togglemenumove(){
+  //   document.getElementById('navbar')?.classList.toggle('unactive')
+  //   console.log("togle move")
+  // }
   return (
     
-    <div className="container">
+    <div className="container" >
       <div className="item1">
-      <div className="menu" ><img src="https://img.icons8.com/ios/50/000000/menu--v1.png"/>
-      </div>
           <div className="logo"><h6>USER PLACES</h6></div>
-          <nav>
+          <div className="menu" onClick={togglemenu} ><img src="icons8-menu-50.png" alt="Toggle menu"/></div>
+          <nav id="navbar">
               <a href="#all users">ALL USERS</a>
               <a href="#sign in">SIGN IN</a>
               <a href="#sign up">SIGN UP</a>
