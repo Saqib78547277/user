@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background: rgb(61, 97, 87);
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center
+  
+    
+}
+form {
+     width:90vw ;
+     background:rgb(40, 145, 143) ;
+     border-radius: 10px;
+     line-height: 2rem;
+}
+
+form h1{
+    line-height: 40px;
+    text-align: center;
+}
+
+form input{
+    display: inline-flex;
+    justify-content: center;
+    padding: 10px;
+    width: 80vw;
+    border-radius: 5px;
+}
+button {
+    padding: 10px;
+    width: 94%;
+    border-radius: 5px;
+    background: none;
+    margin-bottom: 20px;
+    border: 1px solid rgb(12, 153, 12);
+    color: rgb(12, 153, 12);
+}

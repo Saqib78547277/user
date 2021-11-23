@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+body {
+    background: rgb(67, 71, 82);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+form{
+    box-sizing: border-box;
+    background: rgb(37, 155, 155);
+    width: 80%;
+}
+h1 {
+    line-height: 80px;
+    text-align: center;
+}
+
+.item1{
+    display: flex;
+    justify-content: space-evenly;
+}
+.item1 #userImage{
+    height: 200px;
+    box-shadow: 3px 3px 7px  rgb(78, 223, 30);
+    width: 40%; 
+    border-radius: 10px;
+}
+
+.item1 .input1 {
+    width: 50%;
+    border-radius:5px;
+    align-items: center;
+    margin-top: 20px;
+
+   
+}
+
+.item1 .input1 input{
+    width: 82%;
+    align-items: center;
+   border-radius: 10px;
+   margin: 2px 0 7px 0 ;
+    padding: 12px;
+}
+.item2{
+    margin-top: 20px; 
+    display: flex;
+  justify-content: space-evenly;
+   
+
+}
+.item2 .password {
+    width: 46%;
+    line-height: 30px;
+}
+.item2 .password input {
+    width: 90%;
+    border-radius: 10px;
+    padding: 12px;
+}
+.submit-button{
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    margin: 40px 0;
+
+}
+button{
+     border-radius: 10px;
+     padding: 12px;
+     width: 93%;
+     opacity: 0.7;
+     cursor: pointer;
+     border: 1px solid green;
+     background: none;
+}
+button:hover{
+    background: green;
+    color: white;
+}
+
+@media screen and (max-width: 750px) {
+    body{
+        height: 120vh;
+    }
+    .item1{
+        flex-direction: column-reverse;
+       align-items: center;
+    }
+    .item1 #userImage{
+        width: 90%;    
+    }
+
+    .item1 .input1 {
+        width: 90%;
+        flex-direction: column;
+    }
+    .item1 .input1 input {
+        width: 90%;
+    }
+    .item2{
+        flex-direction: column;
+        align-items: center;
+    }
+    .item2 .password {
+        width: 92%;
+    }
+    .item2 .password input {
+        width: 89%;
+    }
+    
+    
+}
