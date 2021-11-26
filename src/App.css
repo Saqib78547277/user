@@ -4,16 +4,14 @@
   
 }
 body {
-  background:rgb(49, 46, 46);
+  background:#282c34;
 }
 
 .container {
   display: grid;
-  background:#282c34;
-  height: 600px;
+ width: 100vw;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 50px 1fr;
- 
 }
 
 .item1 {
@@ -32,14 +30,14 @@ body {
 .innercontainer {
   display: grid;
   width: 100%;
- 
- 
-  grid-template-columns: 25% 25% 25%;
+  grid-template-columns: 30% 30% 30%;
   grid-template-rows: 1fr 1fr 1fr;
   justify-content: center;
   column-gap: 12px;
   row-gap: 12px;
   padding-top: 12px;
+
+  
 
 }
 .inneritem1 {
@@ -50,6 +48,7 @@ body {
   background: rgb(36, 32, 32);
   color: yellow;
   border-radius: 2px;
+  
 }
 
 nav {
@@ -98,7 +97,10 @@ line-height: 70px;
 
 }
 
-
+.heading h4 {
+  padding: 10px 0 0 15px;
+  font-size: 17px;
+}
 .heading p {
   padding: 10px 0 0 15px;
   font-size: 12px;

@@ -1,65 +1,183 @@
-import React, {useState} from 'react'
+import axios from "axios";
+import React, { useState } from "react";
 
-import './SignUp.css'
+import "./SignUp.css";
 
 type Person = {
-    username : string;
-    email : string;
-    password : number;
-    cntPassword : number;
-}
+    username: string;
+    email: string;
+    password: any;
+    cntPassword: any;
+    image: any;
+};
 
 const SignUp = () => {
-    const [data, setdata] = useState<Person>(
-        {
-            username : '',
-            email : '',
-            password : 1,
-            cntPassword : 1
+    const [data, setdata] = useState<Person>({
+        username: "",
+        email: "",
+        password: "",
+        cntPassword: "",
+        image: ""
+    });
+
+    const [message, setMessage] = useState(false);
+    // let f = useRef(4);
+
+    // useEffect(() => {
+    //     console.log(f);
+    //     console.log(message);
+
+    //     return () => { };
+    // }, [message]);
+    const handler = (e:any) => {
+        e.preventDefault();
+        setMessage(true);
+        console.log(message);
+
+
+        const re =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(data.username !==""|| data.email !== "" || data.password !== "" || data.cntPassword !== "" || data.image !== ""){
+            console.table(data)
+            if(re.test(String(data.email).toLowerCase())){
+                console.table(data);
+                axios.post('/user', {
+                    username : data.username,
+                    email : data.email,
+                    password : data.password,
+                    cntPassword : data.cntPassword,
+                    image : data.image
+                })
+                .then((response)=> console.log(response))
+                .catch((error)=> console.log(error))
+
+            }
+            else{
+                alert("Please Enter a valid Email")
+            }
+        }else{
+            alert("Please Enater all Fields")
         }
-    );
+        // let a = data.password.value;
+        // //   console.log(a)
+        // let b = data.cntPassword.value;
 
+        // if (b.length > 5) {
+        //     if (a !== b) {
+        //         alert("pleas enter your password");
+        //         setMessage(true);
+        //         return false;
+        //     } else {
+        //         alert("thanku");
+        //         setMessage(false);
+        //         console.log(data);
+        //         console.table(data);
+        //     }
+        // } else {
+        //     alert("enter password");
+        //     setMessage(true);
+        // }
+    };
 
-    console.table(data)
-
+    const loadFile = (event: any) => {
+        // event.preventDefault();
+        let image = data.image.src;
+        image = URL.createObjectURL(event.target.files[0]);
+        setdata({ ...data, image: image });
+    };
 
     return (
-        <div className="container">
-            <form>
+        <div className="formcontainer">
+            <form onSubmit={handler}>
                 <h1 className="main-hedding">SignUp</h1>
-                <div className="item1">
-                    
+                <div className="formitem1">
                     <div className="input1">
-                    <label htmlFor="name">Name</label><br />
+                        <label htmlFor="name">Name</label>
+                        <br />
 
-                    <input type="text" autoComplete='none' value={data?.username} placeholder="Enter your name" onChange={e =>  setdata({...data, username : e.target.value}) }/><br />
-                    {data.username.length < 4 ? <p>Please enter your Nam</p> : ""}
-                    <p>{data?.username}</p>
-                    <label htmlFor="email">Email</label><br />
-                    <input type="email" value={data?.email} autoComplete= 'non e' placeholder="Enter email"  onChange={e => setdata({...data, email: e.target.value})}/>
+                        <input
+                            type="text"
+                            required
+                            autoComplete="none"
+                            //value={data?.username}
+                            placeholder="Enter your name"
+                            onChange={(e) => {
+                                e.preventDefault();
+                                setdata({ ...data, username: e.target.value });
+                            }}
+                        />
+                        <br />
+                        {/* {message ? <p>hello</p> : '' }
+                    <p>{data?.username}</p> */}
+                        <label htmlFor="email">Email</label>
+                        <br />
+                        <input
+                            type="email"
+                            required
+                            value={data?.email}
+                            autoComplete="none"
+                            placeholder="Enter email"
+                            onChange={(e) => {
+                                e.preventDefault();
+                                setdata({ ...data, email: e.target.value });
+                            }}
+                        />
                     </div>
-                    <input id="userImage" type="file" accept=".jpg, .jpeg, .png," />
-                    
+                    <div id="imagefiles">
+                        <input
+                            type="file"
+                            accept=".jpg, .jpeg, .png,"
+                            id="file"
+                            onChange={loadFile}
+                            style={{ visibility: "hidden" }}
+                        />
+                        <label htmlFor="file" id="label" style={{ cursor: "pointer" }}>
+                            <img src={data.image} alt="" />
+                        </label>
+                    </div>
                 </div>
 
-                <div className="item2">
+                <div className="formitem2">
                     <div className="password">
-                    <label htmlFor="password">Password</label><br />
-                    <input type="password" value={data?.password} id="password" placeholder="Enter password" />
+                        <label htmlFor="password">Password</label>
+                        <br />
+                        <input
+                            type="password"
+                            required
+                            value={data?.password}
+                            id="password"
+                            placeholder="Enter password"
+                            onChange={(e) => {
+                                e.preventDefault();
+                                setdata({ ...data, password: e.target.value });
+                            }}
+                        />
                     </div>
                     <div className="password">
-                    <label htmlFor="conform password">Conform Password</label><br />
-                    <input type="password" id="conform password" placeholder="Enter password" />
-
+                        <label htmlFor="conform password">Conform Password</label>
+                        <br />
+                        <input
+                            type="password"
+                            required
+                            value={data?.cntPassword}
+                            id="conformPassword"
+                            placeholder="Enter password"
+                            onChange={(e) => {
+                                e.preventDefault();
+                                setdata({ ...data, cntPassword: e.target.value });
+                            }}
+                        />
+                        {/* {message ? <span>**Please currect your password</span> : ""} */}
                     </div>
                 </div>
-                
+
                 <div className="submit-button">
-                <button type="submit">Submit</button>
+                    <button type="submit" id="submit">
+                        Submit
+                    </button>
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default SignUp
+export default SignUp;
